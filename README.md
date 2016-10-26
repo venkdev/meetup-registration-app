@@ -22,10 +22,9 @@ You can start it with java -jar registration-0.1.0.jar. If the application is st
 available under http://localhost:8080/registration.html
 
 ## A few words about the technology stack
-The app is build on top of Spring Boot (http://projects.spring.io/spring-boot/) as runtime container. 
-In addition to that we use Jersey for building the REST resources and Velocity for templating pages. 
-To implement the UI, jQuery and Bootstrap is already integrated. Maven is used to build and package the 
-application. 
+The application is build on top of Spring Boot (http://projects.spring.io/spring-boot/) providing a runtime container. 
+Furthermore Jersey for implementing REST resources, Velocity for templating pages and jQuery/Bootstrap is included and 
+can be used as well. Building and packaging the application is done with Maven. 
 
 ## What's expected of me?
 When our engineers receive your final result, we'll be looking at the following things:
@@ -34,7 +33,7 @@ When our engineers receive your final result, we'll be looking at the following 
 * Improvements you made around the main task  
 * The quality and style of code written
 * The tests and their structure and coverage
-* The choice of technologies used to complete the task. You are free to use what every you think is needed and helps you to get it done! 
+* The choice of technologies used to complete the task. *You are free to use what every you think is needed and helps you to get it done!* 
 * The documentation provided (mainly javadoc). Please consider also to document assumptions or decisions you made.  
 
 Typically we expect it to compile and run on a Mac/Windows environment with Java 8. If your set up is any different, do let us know!
