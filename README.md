@@ -14,6 +14,7 @@ save was successful or in case of an error. Ensure mandatory fields will be ente
 and verify the entered values are reasonable e.g. the name must not contains numbers.
 
 To start with, please see the already created files and classes. Especially:
+
 * com.k15t.pat.registration: The package includes a REST endpoint and a controller
 * resources/templates: The folder includes the initial velocity templates for the registration page 
 
