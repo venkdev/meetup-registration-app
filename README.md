@@ -33,7 +33,7 @@ When our engineers receive your final result, we'll be looking at the following 
 * Improvements you made around the main task  
 * The quality and style of code written
 * The tests and their structure and coverage
-* The choice of technologies used to complete the task. *You are free to use what every you think is needed and helps you to get it done!* 
+* The choice of technologies used to complete the task. You are free to use what every you think is needed and helps you to get it done!
 * The documentation provided (mainly javadoc). Please consider also to document assumptions or decisions you made.  
 
 Typically we expect it to compile and run on a Mac/Windows environment with Java 8. If your set up is any different, do let us know!
