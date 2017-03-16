@@ -1,5 +1,5 @@
-K15t Practical Assessment Task - PAT 
-------------------------------------
+# Full-Stack Developer Sample Project
+
 
 ## What is it about?
 Here we have a small web application allowing to register for the next Java Meetup.
