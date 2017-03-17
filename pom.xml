@@ -3,9 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.k15t.pat</groupId>
-    <artifactId>registration</artifactId>
+    <groupId>com.k15t.recruiting</groupId>
+    <artifactId>k15t-full-stack-dev-tasks</artifactId>
     <version>0.1.0</version>
+
+    <name>K15t assessment tasks for full stack developers.</name>
 
     <dependencyManagement>
         <dependencies>
