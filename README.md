@@ -40,6 +40,24 @@ When our engineers receive your final result, we'll be looking at the following 
 Typically we expect it to compile and run on a Mac/Windows environment with Java 8. If your set up is any different, do let us know!
 When you are done share the result via GitHub.
 
+## How to use git ##
+
+To use git to get repository contents run the following git command:
+
+```
+#!bash
+git clone https://bitbucket.org/K15t/k15t-full-stack-dev-tasks.git
+```
+
+Afterwards create a repository in your github account and configure this empty repository as the remote origin:
+
+```
+#!bash
+git remote set-url origin git@github.com:you/yourrepo.git
+git push
+```
+In this way you have now a clean repository and can start to commit to it and we will be able what was your contribution and what was already there. Please do not copy everything into an empty repo and then add all files, this will make the git log and diff a mess.
+
 Tip: Use git as you would in a product environment - small, meaningful commits with descriptive commit messages. This makes it easy for the reviewer to follow your steps and comprehend what you are doing.
 
 Good luck!
