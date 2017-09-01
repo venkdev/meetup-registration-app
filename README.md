@@ -49,7 +49,7 @@ To use git to get repository contents run the following git command:
 git clone https://bitbucket.org/K15t/k15t-full-stack-dev-tasks.git
 ```
 
-Afterwards create a repository in your github account and configure this empty repository as the remote origin:
+Afterwards create a repository in your github or Bitbucket account and configure this empty repository as the remote origin:
 
 ```
 #!bash
