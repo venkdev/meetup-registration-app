@@ -35,7 +35,7 @@ When our engineers receive your final result, we'll be looking at the following 
 * The quality and style of code written
 * The tests and their structure and coverage
 * The choice of technologies used to complete the task. You are free to use whatever you think is needed and helps you to get it done!
-* The documentation provided (mainly javadoc). Please consider also to document assumptions or decisions you made.  
+* The documentation provided. Please consider also to document assumptions or decisions you made (e.g. technologies used). Clear and concise documentation is a must for a senior role.
 
 Typically we expect it to compile and run on a Mac/Windows environment with Java 8. If your set up is any different, do let us know!
 When you are done share the result via GitHub.
