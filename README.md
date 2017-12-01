@@ -56,7 +56,7 @@ Afterwards create a repository in your github or Bitbucket account and configure
 git remote set-url origin git@github.com:you/yourrepo.git
 git push
 ```
-In this way you have now a clean repository and can start to commit to it and we will be able what was your contribution and what was already there. Please do not copy everything into an empty repo and then add all files, this will make the git log and diff a mess.
+In this way you have now a clean repository and can start to commit to it and we will be able to distinguish between what was your contribution and what was already there. Please do not copy everything into an empty repo and then add all files, this will make the git log and diff a mess.
 
 Tip: Use git as you would in a product environment - small, meaningful commits with descriptive commit messages. This makes it easy for the reviewer to follow your steps and comprehend what you are doing.
 
