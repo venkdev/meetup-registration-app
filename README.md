@@ -37,7 +37,7 @@ When our engineers receive your final result, we'll be looking at the following 
 * The tests and their structure and coverage
 * The choice of technologies used to complete the task. You are free to use whatever you think is needed and helps you to get it done!
 
-Typically we expect it to compile and run on a Mac/Windows environment with Java 8. If your set up is any different, do let us know!
+Typically we expect it to compile and run on a Mac environment with Java 8. If your set up is any different, do let us know!
 When you are done share the result via GitHub.
 
 ## How to use git ##
