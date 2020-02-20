@@ -32,13 +32,13 @@ When our engineers receive your final result, we'll be looking at the following 
 
 * The documentation provided. Please consider to document assumptions or decisions you made (e.g. technologies used). Clear and concise documentation is a must for a senior role. The documentation should start in the README.md, which can then contain links/pointers into any further documentation.
 * The ability to build it out of the box using maven
-* Improvements you made around the main task  
+* Improvements you made around the main task
 * The quality and style of code written
 * The tests and their structure and coverage
 * The choice of technologies used to complete the task. You are free to use whatever you think is needed and helps you to get it done!
 
 Typically we expect it to compile and run on a Mac environment with Java 8. If your set up is any different, do let us know!
-When you are done share the result via GitHub.
+When you are done share the result via GitHub or Bitbucket.
 
 ## How to use git ##
 
