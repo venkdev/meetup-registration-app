@@ -12,14 +12,47 @@
                 <span>Java Meetup Registration</span>
             </h1>
         </div>
-        <form>
-            Extend the form and bind the "Submit" button to store the entered information using the REST resource RegistrationResource.
+        <form id="regform" method="post" action="user.html" class="form-horizontal">
+          <!--  Extend the form and bind the "Submit" button to store the entered information using the REST resource RegistrationResource.
             The form should support to enter the following information:<br>
             - Name (required)<br>
             - Password (required)<br>
             - Address (required)<br>
             - Email (required)<br>
-            - Phone number
+            - Phone number -->
+
+            <div class="form-group">
+                <label for="name" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" required id="name" name="name" class="form-control"
+                        pattern="^[^0-9]{0,}$" title="Numeric characters are not allowed"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" required id="password" name="password" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="col-sm-3 control-label">Address</label>
+                <div class="col-sm-9">
+                    <textarea id="address" required name="address" form="regform" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" required id="email" name="email" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber" class="col-sm-3 control-label">Phone Number</label>
+                <div class="col-sm-9">
+                    <input type="number" id="phoneNumber" name="phoneNumber" class="form-control"/>
+                </div>
+            </div>
+
             <p><input class="btn btn-default" type="submit" value="Submit"></p>
         </form>
         #parse ("common/footer.vm")
