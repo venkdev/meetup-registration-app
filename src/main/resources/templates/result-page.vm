@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>PAT Registration</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="public/css/app.css">
+    </head>
+    <body>
+        #parse ("common/header.vm")
+        <div class="bannerText">
+            <h1>
+                <span>Java Meetup Registration</span>
+            </h1>
+        </div>
+        #if( $id )
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Registration successful!</h4>
+            <p>Registration id is $id. See you at the meetup!</p>
+        </div>
+        #end
+        #if( $error )
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Registration failed!</h4>
+            <p>$error. Click  <a href="/" class="alert-link">here</a> for registration page.</p>
+        </div>
+        #end
+        <form id="regform" method="post" action="user" class="form-horizontal">
+        </form>
+        #parse ("common/footer.vm")
+    </body>
+</html>
