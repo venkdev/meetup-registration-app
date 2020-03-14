@@ -1,6 +1,7 @@
 package com.k15t.pat.service.impl;
 
 import com.k15t.pat.dto.UserDto;
+import com.k15t.pat.exception.RegistrationException;
 import com.k15t.pat.model.User;
 import com.k15t.pat.repository.UserRepository;
 import com.k15t.pat.service.RegistrationService;
@@ -21,6 +22,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     ModelMapper modelMapper = new ModelMapper();
 
     public UserDto registerUser(UserDto userDto) {
+        User existingUser = userRepository.getUserByEmail(userDto.getEmail());
+        if(null!=existingUser){
+            throw new RegistrationException("User has already registered!");
+        }
         User user = modelMapper.map(userDto, User.class);
         userRepository.save(user);
         return modelMapper.map(user, UserDto.class);

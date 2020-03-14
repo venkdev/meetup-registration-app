@@ -1,6 +1,7 @@
 package com.k15t.pat.registration;
 
 import com.k15t.pat.dto.UserDto;
+import com.k15t.pat.exception.RegistrationException;
 import com.k15t.pat.service.RegistrationService;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -39,6 +40,9 @@ public class RegistrationController {
         try {
             UserDto createdUser = registrationService.registerUser(userDto);
             context.put("id", createdUser.getId());
+        }
+        catch (RegistrationException re){
+            context.put("error", re.getMessage());
         }
         catch(Exception e){
             context.put("error", "Creation failed");
