@@ -1,9 +1,13 @@
 package com.k15t.pat.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class UserDto {
 
     private long id;
     private String name;
+
+    @JsonIgnore
     private String password;
     private String address;
     private String email;

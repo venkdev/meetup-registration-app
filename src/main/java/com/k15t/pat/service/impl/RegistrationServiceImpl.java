@@ -7,6 +7,7 @@ import com.k15t.pat.repository.UserRepository;
 import com.k15t.pat.service.RegistrationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,11 +18,13 @@ import java.util.List;
 public class RegistrationServiceImpl implements RegistrationService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
-    ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper = new ModelMapper();
 
     public UserDto registerUser(UserDto userDto) {
+        String encryptedPassword = doBCrypt(userDto.getPassword());
+        userDto.setPassword(encryptedPassword);
         User existingUser = userRepository.getUserByEmail(userDto.getEmail());
         if(null!=existingUser){
             throw new RegistrationException("User has already registered!");
@@ -37,5 +40,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         Iterator<User> userIterator = userList.iterator();
         userIterator.forEachRemaining(user -> responseList.add(modelMapper.map(userIterator.next(), UserDto.class)));
         return responseList;
+    }
+
+    private static String doBCrypt(String value) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode(value);
     }
 }
