@@ -32,3 +32,5 @@
 * Rest controllers
 * In memory H2 database to store the participants
 * Junit tests
+
+Removed Jersey configuration as Rest calls can be handled by already existing Spring boot web dependencies.

@@ -14,8 +14,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.modelmapper.ModelMapper;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
 
@@ -29,9 +31,12 @@ public class RegistrationServiceTest {
     @Mock
     UserRepository userRepository;
 
+    ModelMapper modelMapper = new ModelMapper();
+
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
+        ReflectionTestUtils.setField(registrationService, "modelMapper", modelMapper);
     }
 
     @Test

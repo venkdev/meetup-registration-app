@@ -20,7 +20,8 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
     private UserRepository userRepository;
 
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     public UserDto registerUser(UserDto userDto) {
         String encryptedPassword = RegistrationUtils.doBCrypt(userDto.getPassword());
