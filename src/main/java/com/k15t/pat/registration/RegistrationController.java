@@ -3,6 +3,8 @@ package com.k15t.pat.registration;
 import com.k15t.pat.dto.UserDto;
 import com.k15t.pat.exception.RegistrationException;
 import com.k15t.pat.service.RegistrationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -17,6 +19,8 @@ import java.util.List;
 
 @RestController
 public class RegistrationController {
+
+    private static final Logger LOGGER=LoggerFactory.getLogger(RegistrationController.class);
 
     @Autowired private VelocityEngine velocityEngine;
 
@@ -45,6 +49,7 @@ public class RegistrationController {
             context.put("error", re.getMessage());
         }
         catch(Exception e){
+            LOGGER.error(e.getMessage());
             context.put("error", "Creation failed");
         }
         StringWriter writer = new StringWriter();
