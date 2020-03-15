@@ -3,7 +3,7 @@
 
 ## Environment Setup
 
-###Software
+### Software
 * JDK-1.8
 * Tomcat 9 web server
 * Apache Maven
@@ -17,7 +17,7 @@
 * Post successful build, execute `java -jar target/k15t-full-stack-dev-tasks-0.1.0.jar com.k15t.pat.ApplicationBootstrap`
 * Launch localhost:8080 in your browser. Registration page will be rendered.
 
-##Application
+## Application
 * The landing page will display a form. 
 * Fill in the form with necessary information. If the data does not meet the validation conditions, validation errors will be thrown.
 * Clicking on submit would redirect you to Success/Failure page.
