@@ -2,6 +2,7 @@ package com.k15t.pat.registration;
 
 import com.k15t.pat.constants.AppConstants;
 import com.k15t.pat.dto.UserDto;
+import com.k15t.pat.dto.UsersResponseDto;
 import com.k15t.pat.exception.RegistrationException;
 import com.k15t.pat.service.RegistrationService;
 import com.k15t.pat.util.RegistrationUtils;
@@ -10,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,7 +58,9 @@ public class RegistrationController {
     }
 
     @RequestMapping(value="/users", method=RequestMethod.GET)
-    public List<UserDto> getUserList(){
-        return registrationService.getUsers();
+    public ResponseEntity<UsersResponseDto> getUserList(){
+        UsersResponseDto usersResponse = new UsersResponseDto();
+        usersResponse.setUserDtoList(registrationService.getUsers());
+        return new ResponseEntity<>(usersResponse, HttpStatus.OK);
     }
 }
