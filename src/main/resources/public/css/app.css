@@ -35,3 +35,8 @@ form {
     background-color: #4af;
     display: flex;
 }
+
+.required:after {
+    content:" *";
+    color: red;
+}

@@ -35,26 +35,26 @@
             - Phone number -->
 
             <div class="form-group">
-                <label for="name" class="col-sm-3 control-label">Name</label>
+                <label for="name" class="col-sm-3 control-label required">Name</label>
                 <div class="col-sm-9">
                     <input type="text" required id="name" name="name" class="form-control"
                         pattern="^[^0-9]{0,}$" title="Numeric characters are not allowed"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-3 control-label">Password</label>
+                <label for="password" class="col-sm-3 control-label required">Password</label>
                 <div class="col-sm-9">
                     <input type="password" required id="password" name="password" class="form-control"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="address" class="col-sm-3 control-label">Address</label>
+                <label for="address" class="col-sm-3 control-label required">Address</label>
                 <div class="col-sm-9">
                     <textarea id="address" required name="address" form="regform" class="form-control"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Email</label>
+                <label for="email" class="col-sm-3 control-label required">Email</label>
                 <div class="col-sm-9">
                     <input type="email" required id="email" name="email" class="form-control"/>
                 </div>
@@ -67,6 +67,8 @@
             </div>
 
             <p><input class="btn btn-default" type="submit" value="Submit"></p>
+            <div style="float:right">Red asterisk (<span style="color: red">*</span>)
+                indicates mandatory field</div>
         </form>
         #end
         #parse ("common/footer.vm")
