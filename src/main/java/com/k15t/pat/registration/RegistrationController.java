@@ -56,7 +56,7 @@ public class RegistrationController {
             LOGGER.error(e.getMessage());
             userRespDto = new UserDto();
             userRespDto.setErrorMessage(AppConstants.CREATION_FAILED_MSG);
-            return ResponseEntity.unprocessableEntity().body(userRespDto);
+            return new ResponseEntity<>(userRespDto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

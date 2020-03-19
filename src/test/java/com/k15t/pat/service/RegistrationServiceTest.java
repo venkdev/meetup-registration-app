@@ -31,11 +31,13 @@ public class RegistrationServiceTest {
     @Mock
     UserRepository userRepository;
 
-    ModelMapper modelMapper = new ModelMapper();
+    @Mock
+    ModelMapper modelMapper;
 
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
+        modelMapper = new ModelMapper();
         ReflectionTestUtils.setField(registrationService, "modelMapper", modelMapper);
     }
 

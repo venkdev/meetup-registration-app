@@ -1,9 +1,13 @@
 package com.k15t.pat.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserDto extends BaseResponseDto{
 
     private long id;
     private String name;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String address;
     private String email;
