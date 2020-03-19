@@ -1,13 +1,9 @@
 package com.k15t.pat.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-public class UserDto {
+public class UserDto extends BaseResponseDto{
 
     private long id;
     private String name;
-
-    @JsonIgnore
     private String password;
     private String address;
     private String email;

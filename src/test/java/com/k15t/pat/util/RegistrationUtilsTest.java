@@ -16,17 +16,6 @@ import org.springframework.util.Assert;
 @ContextConfiguration(classes = {ApplicationBootstrap.class})
 public class RegistrationUtilsTest {
 
-    @Autowired
-    VelocityEngine velocityEngine;
-
-    @Test
-    public void testPopulateTemplateString(){
-        VelocityContext context = new VelocityContext();
-        context.put(AppConstants.REG_FORM, AppConstants.TRUE);
-        Assert.notNull(RegistrationUtils.populateTemplateString(velocityEngine,
-                "/registration.vm", context));
-    }
-
     @Test
     public void testDoBcrypt(){
         Assert.notNull(RegistrationUtils.doBCrypt(Mockito.anyString()));

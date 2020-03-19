@@ -2,7 +2,7 @@ package com.k15t.pat.dto;
 
 import java.util.List;
 
-public class UsersResponseDto {
+public class UsersResponseDto extends BaseResponseDto{
 
     List<UserDto> userDtoList;
 

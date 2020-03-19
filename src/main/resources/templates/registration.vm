@@ -4,6 +4,47 @@
         <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="public/css/app.css">
+        <script>
+        $(document).ready(function(){
+          $("#submitReg").click(function($event){
+            $event.preventDefault();
+            var $form = $("#regForm");
+            var formData = getFormData($form);
+            var postResourceUrl = "users";
+            $.ajax({
+                url: postResourceUrl,
+                type: "POST",
+                data: JSON.stringify(formData),
+                contentType: "application/json"
+            })
+			.done(function(response)
+			{
+				$('#regForm').hide();
+				$('#successMsg').show();
+				$('#regId').html(response.id);
+				
+			})
+		   .fail(function(errDto)
+			{
+				$('#regForm').hide();
+				$('#failureMsg').show();
+				console.log(JSON.stringify(errDto.responseJSON));
+				$('#errorMessage').html(errDto.responseJSON.errorMessage)
+			});
+          });
+        });
+
+        function getFormData($form){
+            var unIndexedArray = $form.serializeArray();
+            var indexedArray = {};
+
+            $.map(unIndexedArray, function(n, i){
+                indexedArray[n['name']] = n['value'];
+            });
+
+            return indexedArray;
+        }
+        </script>
     </head>
     <body>
         #parse ("common/header.vm")
@@ -12,28 +53,15 @@
                 <span>Java Meetup Registration</span>
             </h1>
         </div>
-        #if( $id )
-        <div class="alert alert-success" role="alert">
+		<div class="alert alert-success" id="successMsg" role="alert" style="display: none">
             <h4 class="alert-heading">Registration successful!</h4>
-            <p>Registration id is $id. See you at the meetup!</p>
+            <p>Registration id is <span id="regId"></span>. See you at the meetup!</p>
         </div>
-        #end
-        #if( $error )
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" id="failureMsg" role="alert" style="display: none">
             <h4 class="alert-heading">Registration failed!</h4>
-            <p>$error Click  <a href="/" class="alert-link">here</a> for registration page.</p>
-        </div>
-        #end
-        #if( $registrationForm )
-        <form id="regform" method="post" action="user.html" class="form-horizontal">
-          <!--  Extend the form and bind the "Submit" button to store the entered information using the REST resource RegistrationResource.
-            The form should support to enter the following information:<br>
-            - Name (required)<br>
-            - Password (required)<br>
-            - Address (required)<br>
-            - Email (required)<br>
-            - Phone number -->
-
+            <p><span id="errorMessage"></span> Click  <a href="/" class="alert-link">here</a> for registration page.</p>
+        </div>		
+        <form id="regForm" method="post" action="user.html" class="form-horizontal">
             <div class="form-group">
                 <label for="name" class="col-sm-3 control-label required">Name</label>
                 <div class="col-sm-9">
@@ -50,7 +78,7 @@
             <div class="form-group">
                 <label for="address" class="col-sm-3 control-label required">Address</label>
                 <div class="col-sm-9">
-                    <textarea id="address" required name="address" form="regform" class="form-control"></textarea>
+                    <textarea id="address" required name="address" form="regForm" class="form-control"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -66,11 +94,10 @@
                 </div>
             </div>
 
-            <p><input class="btn btn-default" type="submit" value="Submit"></p>
+            <p><input class="btn btn-default" type="submit" id="submitReg" value="Submit"></p>
             <div style="float:right">Red asterisk (<span style="color: red">*</span>)
                 indicates mandatory field</div>
         </form>
-        #end
         #parse ("common/footer.vm")
     </body>
 </html>

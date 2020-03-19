@@ -5,19 +5,20 @@ import com.k15t.pat.dto.UserDto;
 import com.k15t.pat.dto.UsersResponseDto;
 import com.k15t.pat.exception.RegistrationException;
 import com.k15t.pat.service.RegistrationService;
-import com.k15t.pat.util.RegistrationUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.io.StringWriter;
 
 
 @RestController
@@ -29,32 +30,34 @@ public class RegistrationController {
 
     @Autowired private RegistrationService registrationService;
 
-    private final String REGISTRATION_TEMPLATE_PATH = "templates/registration.vm";
-
     @RequestMapping("/registration.html")
     public String registration() {
+
+        Template template = velocityEngine.getTemplate("templates/registration.vm");
         VelocityContext context = new VelocityContext();
-        context.put(AppConstants.REG_FORM, AppConstants.TRUE);
-        return RegistrationUtils.populateTemplateString(velocityEngine,
-                REGISTRATION_TEMPLATE_PATH, context);
+        StringWriter writer = new StringWriter();
+        template.merge(context, writer);
+
+        return writer.toString();
     }
 
-    @RequestMapping(value = "/user.html", method = RequestMethod.POST)
-    public String registerUser(UserDto userDto){
-        VelocityContext context = new VelocityContext();
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto){
+        UserDto userRespDto;
         try {
-            UserDto createdUser = registrationService.registerUser(userDto);
-            context.put(AppConstants.ID, createdUser.getId());
-        }
-        catch (RegistrationException re){
-            context.put(AppConstants.ERROR, re.getMessage());
+            userRespDto = registrationService.registerUser(userDto);
+            return ResponseEntity.ok(userRespDto);
+        }catch (RegistrationException re){
+            userRespDto = new UserDto();
+            userRespDto.setErrorMessage(re.getMessage());
+            return ResponseEntity.badRequest().body(userRespDto);
         }
         catch(Exception e){
             LOGGER.error(e.getMessage());
-            context.put(AppConstants.ERROR, AppConstants.CREATION_FAILED_MSG);
+            userRespDto = new UserDto();
+            userRespDto.setErrorMessage(AppConstants.CREATION_FAILED_MSG);
+            return ResponseEntity.unprocessableEntity().body(userRespDto);
         }
-        return RegistrationUtils.populateTemplateString(velocityEngine,
-                REGISTRATION_TEMPLATE_PATH, context);
     }
 
     @RequestMapping(value="/users", method=RequestMethod.GET)
